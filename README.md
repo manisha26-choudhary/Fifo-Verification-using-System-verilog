@@ -18,11 +18,11 @@ It demonstrates fundamental digital design principles such as memory management,
 | Port | Direction | Width | Description |
 |------|-----------|-------|-------------|
 | `clk`   | Input  | 1   | Clock signal |
-| `rst`   | Input  | 1   | Active-high reset |
-| `wr`    | Input  | 1   | Write enable |
-| `rd`    | Input  | 1   | Read enable |
-| `din`   | Input  | 8   | Data input |
-| `dout`  | Output | 8   | Data output |
+| `reset`   | Input  | 1   | Active-high reset |
+| `write`    | Input  | 1   | Write enable |
+| `read`    | Input  | 1   | Read enable |
+| `d`   | Input  | 8   | Data input |
+| `q`  | Output | 8   | Data output |
 | `empty` | Output | 1   | FIFO empty flag |
 | `full`  | Output | 1   | FIFO full flag |
 
@@ -38,10 +38,10 @@ It demonstrates fundamental digital design principles such as memory management,
     Clears pointers (`wptr=0`, `rptr=0`)  
     Resets counter (`cnt=0`)  
 
-2. **Write (`wr=1` and `full=0`)**
-    Stores `din` into `mem[wptr]`  
+2. **Write (`write=1` and `full=0`)**
+    Stores `d` into `mem[wptr]`  
     Increments `wptr` and `cnt`  
 
-3. **Read (`rd=1` and `empty=0`)**
-    Outputs `mem[rptr]` → `dout`  
+3. **Read (`read=1` and `empty=0`)**
+    Outputs `mem[rptr]` → `q`  
     Increments `rptr`, decrements `cnt`  
